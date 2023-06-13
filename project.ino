@@ -82,6 +82,7 @@ void loop() {
 
   // Display the average distance and object detection on the LCD
   lcd.setCursor(0, 1);
+  lcd.print("DISTANCE : ");
   lcd.print(distance);
   lcd.print(" cm  ");
 
