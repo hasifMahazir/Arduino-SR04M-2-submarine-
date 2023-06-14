@@ -24,7 +24,7 @@ int previousButtonState = LOW;
 bool motorEnabled = false;
 
 void setup() {
-  Serial.begin(57600);
+  Serial.begin(9600);
 
   // LCD setup
   lcd.init();
