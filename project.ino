@@ -94,7 +94,7 @@ void loop() {
     lcd.print("                ");  // Clear the first line of the LCD
   }
 
-  delay(400);
+  delay(500);
 }
 
 unsigned long measureDistance() {
