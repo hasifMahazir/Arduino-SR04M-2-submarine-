@@ -12,11 +12,6 @@ const int buttonPin = 8;
 // LCD display initialization
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
-// Distance measurement variables
-const int numReadings = 2; // Number of readings to average
-unsigned int readings[numReadings];
-int readingsIndex = 0;
-unsigned long total = 0;
 
 // Button variables
 int buttonState = LOW;
@@ -41,10 +36,7 @@ void setup() {
   pinMode(buzzerPin, OUTPUT);
   pinMode(buttonPin, INPUT_PULLUP);
 
-  // Initialize distance readings array
-  for (int i = 0; i < numReadings; ++i) {
-    readings[i] = 0;
-  }
+  
 }
 
 void loop() {
@@ -52,11 +44,6 @@ void loop() {
   unsigned long duration = measureDistance();
   unsigned int distance = ((duration * 0.035) / 2);
 
-  total = total - readings[readingsIndex];
-  readings[readingsIndex] = distance;
-  total = total + readings[readingsIndex];
-  readingsIndex = (readingsIndex + 1) % numReadings;
-  unsigned int averageDistance = total / numReadings;
 
   // Read the state of the button
   buttonState = digitalRead(buttonPin);
@@ -100,7 +87,7 @@ void loop() {
 unsigned long measureDistance() {
   // Trigger the ultrasonic sensor
   digitalWrite(trigPin, LOW);
-  delayMicroseconds(10);
+  delayMicroseconds(5);
   digitalWrite(trigPin, HIGH);
   delayMicroseconds(350);
   digitalWrite(trigPin, LOW);
