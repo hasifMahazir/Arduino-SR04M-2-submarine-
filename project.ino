@@ -42,7 +42,7 @@ void setup() {
 void loop() {
   // Measure distance using the SR04T/SR04M module
   unsigned long duration = measureDistance();
-  unsigned int distance = ((duration * 0.035) / 2);
+  unsigned int distance = ((duration * 0.033) / 2);
 
 
   // Read the state of the button
